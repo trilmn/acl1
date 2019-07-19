@@ -8,7 +8,7 @@ title: Icons
   {% for cat in site.data.svg-icons %}
     {% if cat.title == "Mixed usage" %}
       <div class="has-solid-set">
-        <h4>{{ cat.title }}</h4>
+        
         <div class="switch">
           <a id="line" class="link -active" href="javascript:void(0)" onclick="solidify(this)">Line set</a>
           <a id ="solid" class="link" href="javascript:void(0)" onclick="solidify(this)">Solid set</a>
