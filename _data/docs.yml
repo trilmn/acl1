@@ -1,0 +1,39 @@
+- title: SASS
+  docs:
+  - guidelines
+  - mixins
+  - variables
+
+- title: Style
+  docs:
+  - colorscheme
+  - typography
+
+- title: Component
+  docs:
+  - naming
+  - avatar
+  - breadcrumb
+  - button
+  - card
+  - form
+  - grid
+  - icons
+  - label
+  - loader
+  - modal
+  - nav
+  - notif-badge
+  - popover
+  - progress-bar
+  - status
+  - table
+  - toast
+  - tooltip
+  - well
+
+- title: Helper
+  docs:
+  - utils
+  - padding
+  - margin

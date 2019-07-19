@@ -1,0 +1,57 @@
+@mixin well-generator($border-color, $text-color) {
+    border-left: 3px solid $border-color;
+    color: $text-color;
+}
+
+.well {
+    @include align-items(center);
+    @include display(flex);
+    @include transition(all .1s ease-in);
+    @include well-generator($grey-light-40, $grey-dark-40);
+    background: $white;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 0 1px 10px 0 rgba($black, .1);
+    margin-bottom: $spacing-normal;
+    padding: $spacing-normal;
+    width: 100%;
+
+    &:hover {
+        box-shadow: 0 0 3px 0 rgba($black, .1);
+    }
+
+    &.-primary {
+        @include well-generator($primary-color-light-40, $primary-color-dark-40);
+    }
+
+    &.-success {
+        @include well-generator($success-color-light-40, $success-color-dark-40);
+    }
+
+    &.-warning {
+        @include well-generator($warning-color-light-40, $warning-color-dark-40);
+    }
+
+    &.-danger {
+        @include well-generator($danger-color-light-40, $danger-color-dark-40);
+    }
+
+    > .icon-svg {
+        @include flex(0 0 16px);
+        margin-right: $spacing-normal;
+    }
+
+    .description {
+        @include flex-grow(1);
+        @include flex-shrink(1);
+    }
+
+    p:only-child,
+    p:last-child {
+        margin-bottom: 0;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+}

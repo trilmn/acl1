@@ -1,0 +1,76 @@
+.tooltip-demo {
+    margin: 40px auto;
+
+    [class*="cols-"] {
+        text-align: center;
+    }
+
+    .-large-tooltip {
+        margin-bottom: 80px;
+        margin-top: 80px;
+    }
+
+    .tooltip {
+        color: $grey-light-20;
+    }
+
+    .tooltip-basic {
+        margin: 120px 0;
+    }
+
+    &.-position {
+        @include size(700px 250px);
+        margin: 100px auto;
+        position: relative;
+
+        .tooltip {
+            position: absolute;
+        }
+
+        .-top {
+            left: 50%;
+            top: 0;
+        }
+
+        .-top-left {
+            left: 0;
+            top: 0;
+        }
+
+        .-top-right {
+            right: 0;
+            top: 0;
+        }
+
+        .-left {
+            left: 0;
+            top: 50%;
+        }
+
+        .-right {
+            right: 0;
+            top: 50%;
+        }
+
+        .-bottom {
+            bottom: 0;
+            left: 50%;
+        }
+
+        .-bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+
+        .-bottom-right {
+            bottom: 0;
+            right: 0;
+        }
+    }
+
+    &.-color {
+        .row {
+            padding: 50px 0;
+        }
+    }
+}

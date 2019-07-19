@@ -1,0 +1,273 @@
+$icon-base-size: 16px;
+$icon-medium-size: 32px;
+$icon-large-size: 48px;
+
+.icon {
+    @include icon(normal);
+
+    &.-user::before {
+        content: '\e900';
+    }
+
+    &.-user-add::before {
+        content: '\e901';
+    }
+
+    &.-user-accept::before {
+        content: '\e902';
+    }
+
+    &.-user-remove::before {
+        content: '\e903';
+    }
+
+    &.-user-promote::before {
+        content: '\e904';
+    }
+
+    &.-user-assigned::before {
+        content: '\e905';
+    }
+
+    &.-group::before {
+        content: '\e906';
+    }
+
+    &.-add::before {
+        content: '\e907';
+    }
+
+    &.-checkmark::before {
+        content: '\e908';
+    }
+
+    &.-close::before {
+        content: '\e909';
+    }
+
+    &.-search::before {
+        content: '\e90a';
+    }
+
+    &.-filter::before {
+        content: '\e90b';
+    }
+
+    &.-flag::before {
+        content: '\e90c';
+    }
+
+    &.-sign-in::before {
+        content: '\e90d';
+    }
+
+    &.-sign-out::before {
+        content: '\e90e';
+    }
+
+    &.-speech-bubble::before {
+        content: '\e90f';
+    }
+
+    &.-clock::before {
+        content: '\e910';
+    }
+
+    &.-calendar::before {
+        content: '\e911';
+    }
+
+    &.-cloud::before {
+        content: '\e912';
+    }
+
+    &.-download::before {
+        content: '\e913';
+    }
+
+    &.-upload::before {
+        content: '\e914';
+    }
+
+    &.-hamburger::before {
+        content: '\e915';
+    }
+
+    &.-kebab::before {
+        content: '\e916';
+    }
+
+    &.-grilling-kebab::before {
+        content: '\e917';
+    }
+
+    &.-attention::before {
+        content: '\e918';
+    }
+
+    &.-trash::before {
+        content: '\e919';
+    }
+
+    &.-tag::before {
+        content: '\e91a';
+    }
+
+    &.-share::before {
+        content: '\e91b';
+    }
+
+    &.-edit::before {
+        content: '\e91c';
+    }
+
+    &.-send::before {
+        content: '\e91d';
+    }
+
+    &.-mail::before {
+        content: '\e91e';
+    }
+
+    &.-valid::before {
+        content: '\e91f';
+    }
+
+    &.-activity::before {
+        content: '\e920';
+    }
+
+    &.-discussion::before {
+        content: '\e921';
+    }
+
+    &.-document::before {
+        content: '\e922';
+    }
+
+    &.-folder::before {
+        content: '\e923';
+    }
+
+    &.-multi-folder::before {
+        content: '\e93d';
+    }
+
+    &.-task::before {
+        content: '\e924';
+    }
+
+    &.-bell::before {
+        content: '\e925';
+    }
+
+    &.-cog::before {
+        content: '\e926';
+    }
+
+    &.-info::before {
+        content: '\e927';
+    }
+
+    &.-bar-chart::before {
+        content: '\e928';
+    }
+
+    &.-gantt-chart::before {
+        content: '\e929';
+    }
+
+    &.-line-chart::before {
+        content: '\e92a';
+    }
+
+    &.-pie-chart::before {
+        content: '\e92b';
+    }
+
+    &.-down-pointer::before {
+        content: '\e92c';
+    }
+
+    &.-left-pointer::before {
+        content: '\e92d';
+    }
+
+    &.-right-pointer::before {
+        content: '\e92e';
+    }
+
+    &.-up-pointer::before {
+        content: '\e92f';
+    }
+
+    &.-lock::before {
+        content: '\e930';
+    }
+
+    &.-receipt::before {
+        content: '\e931';
+    }
+
+    &.-waiting::before {
+        content: '\e93b';
+    }
+
+    &.-attachment::before {
+        content: '\e932';
+    }
+
+    &.-bold::before {
+        content: '\e933';
+    }
+
+    &.-italic::before {
+        content: '\e936';
+    }
+
+    &.-bullet-point::before {
+        content: '\e93a';
+    }
+
+    &.-ordered-list::before {
+        content: '\e937';
+    }
+
+    &.-expand::before {
+        content: '\e934';
+    }
+
+    &.-indent::before {
+        content: '\e935';
+    }
+
+    &.-outdent::before {
+        content: '\e938';
+    }
+
+    &.-redo::before {
+        content: '\e939';
+    }
+
+    &.-refresh::before {
+        content: '\e93c';
+    }
+}
+
+.icon-svg {
+    fill: currentColor;
+    fill-rule: evenodd;
+    height: $icon-base-size;
+    max-width: $icon-base-size;
+    position: relative;
+
+    &.-medium {
+        height: $icon-medium-size;
+        max-width: $icon-medium-size;
+    }
+
+    &.-large {
+        height: $icon-large-size;
+        max-width: $icon-large-size;
+    }
+}

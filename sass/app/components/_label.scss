@@ -1,0 +1,71 @@
+// Label component
+@mixin general-label($background-color, $border-color, $text-color) {
+    @if $background-color == null {
+        background-color: $white;
+    } @else {
+        background-color: $background-color;
+    }
+    @if $border-color == null {
+        border: 0;
+    } @else {
+        border: 1px solid $border-color;
+    }
+    color: $text-color;
+}
+
+.label {
+    @include general-label(lighten($grey-light-80, 5%), null, $grey);
+    border-radius: $base-border-radius;
+    cursor: default;
+    display: inline-block;
+    font-family: $font-condensed;
+    font-size: $small-font-size;
+    font-weight: $font-weight-xbold;
+    letter-spacing: 1px;
+    line-height: 1;
+    padding: 3px 4px 3px 5px;
+    text-transform: uppercase;
+
+    // Variants
+    &.-primary {
+        @include general-label($primary-color, null, $primary-color-light-100);
+    }
+
+    &.-success {
+        @include general-label($success-color, null, $success-color-light-100);
+    }
+
+    &.-warning {
+        @include general-label($warning-color, null, $warning-color-light-100);
+    }
+
+    &.-danger {
+        @include general-label($danger-color, null, $danger-color-light-100);
+    }
+
+    // Border only
+    &.-border-only {
+        @include general-label(null, $grey, $grey);
+
+        &.-primary {
+            @include general-label(null, $primary-color, $primary-color);
+        }
+
+        &.-success {
+            @include general-label(null, $success-color, $success-color);
+        }
+
+        &.-warning {
+            @include general-label(null, $warning-color, $warning-color);
+        }
+
+        &.-danger {
+            @include general-label(null, $danger-color, $danger-color);
+        }
+    }
+
+    // Size
+    &.-large {
+        font-size: $base-font-size;
+    }
+}

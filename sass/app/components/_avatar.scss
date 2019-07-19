@@ -1,0 +1,96 @@
+$small-avatar-size: 24px;
+$default-avatar-size: 32px;
+$large-avatar-size: 48px;
+$xlarge-avatar-size: 64px;
+$xxlarge-avatar-size: 72px;
+
+@mixin avatar-size-generator($size, $font-size) {
+    @include size($size);
+    font-size: $font-size;
+    line-height: $size;
+}
+
+.avatar {
+    @include align-items(center);
+    @include avatar-size-generator($default-avatar-size, $small-font-size);
+    @include display(flex);
+    @include justify-content(center);
+    background-color: $grey-light-40;
+    border-radius: $round-border-radius;
+    color: $grey-light-100;
+    cursor: default;
+    display: inline-block;
+    font-weight: $font-weight-semibold;
+    letter-spacing: .025em;
+    overflow: initial;
+    text-align: center;
+
+    img {
+        width: 100%;
+    }
+
+    &.-large,
+    &.-xlarge,
+    &.-xxlarge {
+        font-weight: $font-weight-regular;
+    }
+
+    &.-small {
+        @include avatar-size-generator($small-avatar-size, $tiny-font-size);
+        font-weight: $font-weight-bold;
+    }
+
+    &.-large {
+        @include avatar-size-generator($large-avatar-size, 16px);
+    }
+
+    &.-xlarge {
+        @include avatar-size-generator($xlarge-avatar-size, 20px);
+    }
+
+    &.-xxlarge {
+        @include avatar-size-generator($xxlarge-avatar-size, 24px);
+    }
+
+    &.-square {
+        border-radius: $base-border-radius;
+    }
+
+    &.-empty {
+        background-color: lighten($grey-light-80, 5%);
+        border: $base-border;
+        color: $grey;
+        cursor: default;
+
+        .icon-svg {
+            @include position(relative, 1px null null null);
+            margin-right: 0;
+        }
+    }
+}
+
+.avatar-block {
+    @include display(flex);
+    @include align-items(center);
+
+    .avatar {
+        @include flex-shrink(0);
+        margin-right: 10px;
+    }
+
+    .nameholder {
+        color: inherit;
+
+        .title {
+            font-size: $base-font-size;
+            font-weight: $font-weight-bold;
+            margin-bottom: 1px;
+        }
+
+        .description {
+            color: $grey-light-20;
+            display: block;
+            word-break: break-word;
+        }
+    }
+}

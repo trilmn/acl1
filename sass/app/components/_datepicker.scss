@@ -1,0 +1,186 @@
+// Datepicker Variables
+$datepicker-height:                   36px;
+$datepicker-bg:                       linear-gradient($white, $grey-light-100);
+$datepicker-bg-active:                linear-gradient($grey-light-100, $white);
+
+// Datepicker
+.datepicker {
+    cursor: pointer;
+    display: inline-block;
+    min-width: 300px;
+    position: relative;
+    z-index: $z-index-datepicker-field;
+
+    &:focus {
+        @include base-input($white, $grey-light-80, none);
+        outline: medium none;
+    }
+
+    &::after {
+        @include icon(bold);
+        @include position(absolute, 10px 10px null null);
+        color: $grey;
+        content: '\e911';
+        font-size: $base-font-size + 2;
+    }
+
+    // Selection
+    > .selection {
+        @include base-input(transparent, $grey-light-60, none);
+        background-image: $datepicker-bg;
+        cursor: pointer;
+        height: $datepicker-height;
+        padding: 8px 12px 7px;
+        position: relative;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+        }
+
+        &.-active {
+            background-image: $datepicker-bg-active;
+            border-radius: $base-border-radius $base-border-radius $base-border-radius 0;
+        }
+    }
+
+    &.disabled {
+        > .selection {
+            background-color: $grey-light-100;
+        }
+    }
+
+    > .inner {
+        @include position(absolute, calc(100% - 1px) null null null);
+        background: $white;
+        border: $base-border;
+        color: $base-font-color;
+        display: block;
+        z-index: $z-index-calendar-dropdown;
+    }
+
+    &.-hidden {
+        display: none;
+    }
+
+    .calendar {
+        float: left;
+        margin: $spacing-normal - 2;
+        width: 240px;
+
+        .title {
+            position: relative;
+            text-align: center;
+        }
+
+        .date-label {
+            display: inline-block;
+            font-size: $base-font-size;
+            font-weight: $font-weight-bold;
+            line-height: 17px;
+            margin: 0;
+            overflow: hidden;
+            padding: 5px 3px;
+            position: relative;
+        }
+
+        .select {
+            @include position(absolute, 5px null null 0);
+            cursor: pointer;
+            display: inline-block;
+            margin: 0;
+            opacity: 0;
+        }
+    }
+
+    .next,
+    .prev {
+        @include hide-text;
+        @include position(absolute, 10px null null null);
+        background: none;
+        border: 0;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+    }
+
+    .prev {
+        @include triangle(10px, $primary-color, left);
+        left: $spacing-normal;
+    }
+
+    .next {
+        @include triangle(10px, $primary-color, right);
+        right: $spacing-normal;
+    }
+
+    .day-table {
+        border: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+
+        .weekday {
+            border-bottom: 0;
+            cursor: default;
+            text-decoration: none;
+        }
+
+        .weekday-holder {
+            color: $grey-light-20;
+            font-size: $small-font-size;
+            font-weight: $font-weight-bold;
+            line-height: 25px;
+            text-align: center;
+        }
+
+        .day-holder,
+        .weekday-holder {
+            padding: 0;
+        }
+
+        .day {
+            @include prefixer(box-sizing, border-box, webkit moz ms o spec);
+            background: $white;
+            border: 0;
+            border-radius: $base-border-radius;
+            color: $base-font-color;
+            cursor: pointer;
+            display: block;
+            font-size: $base-font-size;
+            line-height: $base-font-size;
+            margin: 0;
+            outline: none;
+            padding: 9px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .day:hover {
+            background: $grey-light-80;
+        }
+
+        .day:focus {
+            border: 0;
+            outline: none;
+        }
+    }
+
+    .day-disabled .day {
+        cursor: default;
+        opacity: .1;
+        pointer-events: none;
+    }
+
+    .day-today .day {
+        color: $primary-color;
+        font-weight: $font-weight-bold;
+    }
+
+    .day-selected .day {
+        background: $primary-color-light-100;
+        border: 1px solid $primary-color;
+        color: $primary-color;
+        font-weight: $font-weight-bold;
+    }
+}

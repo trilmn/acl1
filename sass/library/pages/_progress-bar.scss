@@ -1,0 +1,47 @@
+.progress-demo {
+    margin-top: 40px;
+}
+
+.progress-bar-wrapper {
+    // Progress Bar Text
+    .text {
+        display: block;
+
+        &:first-child {
+            font-weight: $font-weight-semibold;
+        }
+
+        &:last-child {
+            color: $grey-light-20;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.progress-usage {
+    // Modal With Progress Bar
+    .modal-body {
+        padding-bottom: 0;
+
+        .upload-status {
+            margin-top: 20px;
+        }
+
+        .remove {
+            color: $grey-light-40;
+            margin-top: 16px;
+        }
+    }
+
+    // Form With Progress Bar
+    form {
+        margin-left: 0;
+        margin-top: 100px;
+        width: 550px;
+
+        .add-file {
+            font-size: $base-font-size;
+            margin-top: 16px;
+        }
+    }
+}

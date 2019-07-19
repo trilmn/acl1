@@ -1,0 +1,23 @@
+.avatar-showcase {
+	@include display(flex);
+	@include flex-flow(wrap);
+	@include align-items(center);
+	font-size: 0;
+
+	> .size {
+		color: $grey-light-20;
+		font-size: $small-font-size;
+		margin-left: 10px;
+		margin-right: 60px;
+	}
+
+	> .avatar-block {
+		margin-bottom: 30px;
+		margin-right: 60px;
+		width: 100%;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

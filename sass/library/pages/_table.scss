@@ -1,0 +1,19 @@
+.table-demo {
+    margin-top: 40px;
+
+    .-hover td {
+        background-color: rgba($primary-color-light-100, .5);
+        border-bottom-color: $primary-color-light-80;
+    }
+
+    .checkbox-item {
+        @include flex(0 0 60px);
+        width: 60px;
+    }
+
+    .small {
+        color: $grey;
+        display: inline-block;
+        margin-top: 10px;
+    }
+}

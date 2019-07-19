@@ -1,0 +1,100 @@
+%icon-box {
+    @include transition(all .2s ease-in);
+    @include size(100px 60px);
+    background-color: $grey-light-100;
+    border-radius: $base-border-radius;
+    color: $grey-dark-40;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 60px;
+    margin-bottom: 60px;
+    margin-right: 20px;
+    text-align: center;
+
+    &:hover {
+        @include transform(scale(1.2));
+        background-color: $grey-light-80;
+    }
+
+    > .code {
+        color: $grey;
+        display: block;
+        font-family: $base-font-family;
+        font-size: $small-font-size;
+        line-height: $base-line-height;
+        margin-top: 10px;
+    }
+}
+
+.glyph-table,
+.icon-table {
+    @include display(flex);
+    @include flex-wrap(wrap);
+}
+
+.glyph-table {
+    > .icon {
+        @extend %icon-box;
+        font-size: 17px;
+
+        &:hover {
+            color: $base-font-color;
+            font-size: 34px;
+        }
+    }
+}
+
+.icon-table {
+    > .icon {
+        @extend %icon-box;
+        @include align-items(center);
+        @include display(flex);
+        @include justify-content(center);
+        position: relative;
+
+        .icon-svg {
+            @include transition(all .2s ease-in);
+        }
+
+        .code {
+            @include position(absolute, 60px null null null);
+        }
+    }
+
+    > .icon:hover {
+        .icon-svg {
+            @include size(32px);
+            fill: $grey-dark-80;
+        }
+    }
+}
+
+.icon-svg-showcase {
+    h4 {
+        margin-bottom: 10px;
+    }
+}
+
+.has-solid-set {
+    @include align-items(center);
+    @include display(flex);
+    margin-bottom: 10px;
+
+    h4 {
+        margin-bottom: 0;
+    }
+
+    .switch {
+        margin-left: auto;
+        margin-right: 20px;
+
+        .link {
+            color: $grey-light-40;
+            margin-right: 5px;
+        }
+
+        .-active.link {
+            color: $primary-color;
+        }
+    }
+}

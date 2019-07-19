@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+    <div class="current-version">
+      <span class="tooltip -fade -left" data-tip="Latest Version">
+        <span class="label">acl-{{ site.version }}</span>
+      </span>
+    </div>
+
+    <div class="page-content">
+
+      <div class="wrapper">
+        {{ content }}
+      </div>
+
+    </div>
+
+    {% include sidebar.html %}
+
+    <div class="copyright">
+      <span class="tooltip -fade -left" data-tip="&copy; {{ site.time | date: '%Y' }}, Anduin Transactions">&copy;</span>
+    </div>
+
+  </body>
+
+</html>

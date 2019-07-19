@@ -1,0 +1,239 @@
+// Fullscreen Loader
+.loader-fullscreen {
+    @include position(fixed, 0 0 0 0);
+    @include size(100%);
+    display: table;
+    z-index: $z-index-fullscreen-load;
+
+    &.-opacity-background {
+        background-color: rgba($white, .75);
+    }
+
+    &.-solid-background {
+        background-color: $grey-light-100;
+    }
+
+    .loader-container {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+// General Loader
+@include keyframes(loader-general) {
+    0%, 100% {
+        @include transform(scale(1));
+        opacity: 1;
+    }
+
+    50% {
+        @include transform(scale(.5, .3));
+        opacity: .6;
+    }
+}
+
+.loader-general {
+    font-size: 0;
+    margin: 0 auto;
+    text-align: center;
+
+    > .item {
+        @include animation(loader-general .9s -.6s infinite cubic-bezier(.85, .25, .37, .85));
+        @include size(4px 30px);
+        background-color: $grey-light-60;
+        border-radius: 2px;
+        display: inline-block;
+        margin: 0 2px;
+
+        &:nth-child(1),
+        &:nth-child(5) {
+            @include animation-delay(-.2s);
+        }
+
+        &:nth-child(2),
+        &:nth-child(4) {
+            @include animation-delay(-.4s);
+        }
+    }
+}
+
+// Inline Loader
+@include keyframes(loader-inline) {
+    0%, 100% {
+        @include transform(scale(1));
+        opacity: 1;
+    }
+
+    50% {
+        @include transform(scale(.5));
+        opacity: .6;
+    }
+}
+
+.loader-inline {
+    display: inline-block;
+    font-size: 0;
+
+    > .item {
+        @include animation(loader-inline .9s ease-in-out infinite);
+        @include size(6px);
+        background-color: $grey-light-60;
+        border-radius: $round-border-radius;
+        display: inline-block;
+        margin: 0 1px;
+
+        &:nth-child(2) {
+            @include animation-delay(.2s);
+        }
+
+        &:nth-child(3) {
+            @include animation-delay(.4s);
+        }
+    }
+}
+
+
+// Initial Load
+@include keyframes(loading-initial) {
+    0%, 100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@include keyframes(loading-initial-done) {
+    1% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.loader-initial {
+    display: table;
+    margin: 0 auto;
+
+    .loading-anim {
+        @include animation(loading-initial 1s infinite);
+        display: table-cell;
+        vertical-align: middle;
+
+        > .logo {
+            display: block;
+            margin: 0 auto;
+            width: 90px;
+        }
+
+        > .text {
+            font-size: 24px;
+            letter-spacing: 12px;
+            margin-top: 16px;
+            padding-left: 12px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+
+    .loading-anim-done {
+        @include animation(loading-initial-done 2s both);
+    }
+}
+
+// Dotting Load
+@include keyframes(dotting) {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.loader-dot {
+    text-transform: uppercase;
+
+    .dot {
+        > .item {
+            @include animation(dotting 1s infinite);
+            position: relative;
+        }
+
+        > .item:nth-child(2) {
+            @include animation-delay(.1s);
+        }
+
+        > .item:nth-child(3) {
+            @include animation-delay(.3s);
+        }
+    }
+}
+
+// Loading Bar on top
+@include keyframes(runaway) {
+    0% {
+        left: -55%;
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 75%;
+        opacity: 0;
+    }
+}
+
+@include keyframes(runaway2) {
+    0% {
+        left: -55%;
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 75%;
+        opacity: 0;
+    }
+}
+
+.loader-bar {
+    @include position(fixed, 0 0 null 0);
+    @include size(100% 3px);
+    overflow: hidden;
+    z-index: $z-index-bar-load;
+
+    > .bar {
+        @include background-image(linear-gradient(to right, transparent, $warning-color 50%));
+        @include position(absolute, 0 null null null);
+        @include size(50% 3px);
+        border-radius: $base-border-radius;
+        display: block;
+    }
+
+    > .bar:nth-child(1) {
+        @include animation(runaway 5s ease-in-out infinite);
+    }
+
+    > .bar:nth-child(2) {
+        @include animation(runaway2 5s -2.5s ease-in-out infinite);
+    }
+}

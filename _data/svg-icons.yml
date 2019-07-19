@@ -1,0 +1,105 @@
+- title: Directional
+  icons:
+  - arrow-down
+  - arrow-left
+  - arrow-right
+  - arrow-up
+  - arrow-up-down
+  - arrow-left-right
+  - chevron-down
+  - chevron-left
+  - chevron-right
+  - chevron-up
+  - chevron-up-down
+  - chevron-left-right
+  - triangle-down
+  - triangle-left
+  - triangle-right
+  - triangle-up
+  - triangle-up-down
+  - triangle-left-right
+
+- title: Functional
+  icons:
+  - plus
+  - checkmark
+  - cross
+  - grilling-kebab
+  - hamburger
+  - kebab
+  - redo
+  - refresh
+  - search
+
+- title: Text formatting
+  icons:
+  - bold
+  - bullet-point
+  - clippie
+  - italic
+  - ordered-list
+
+- title: Graphs
+  icons:
+  - bar-chart
+  - dot-graph
+  - gantt-chart
+  - line-chart
+  - pie-chart
+
+- title: Mixed usage
+  icons:
+  - activity
+  - add
+  - archive
+  - attention
+  - bell
+  - briefcase
+  - calendar
+  - clipboard
+  - clock
+  - cloud
+  - cog
+  - discussion
+  - document
+  - documents
+  - download
+  - edit
+  - expand
+  - eye
+  - filter
+  - flag
+  - folder
+  - folders
+  - info
+  - invalid
+  - lock
+  - mail-in
+  - mail-out
+  - mail-read
+  - mail
+  - minus
+  - new-message
+  - pause
+  - phone
+  - receipt
+  - rocket
+  - sand-clock
+  - send
+  - share
+  - sign-in
+  - sign-out
+  - speech-bubble
+  - tag
+  - trash
+  - upload
+  - user-accept
+  - user-add
+  - user-assign
+  - user-group
+  - user-promote
+  - user-remove
+  - user
+  - valid
+  - zoom-in
+  - zoom-out

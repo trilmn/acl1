@@ -1,0 +1,51 @@
+@mixin progress-variant($container-bg-color, $progress-bg-color) {
+    background-color: $container-bg-color;
+
+    .progress {
+        background-color: $progress-bg-color;
+    }
+}
+
+// Progress Bar Standard
+.progress-bar {
+    $progress-bar-height: 4px;
+    @include progress-variant($primary-color-light-80, $primary-color);
+    border-radius: $progress-bar-height / 2;
+    height: $progress-bar-height;
+    position: relative;
+
+    .progress {
+        @include position(absolute, null null null 0);
+        border-radius: inherit;
+        height: inherit;
+        max-width: 100%;
+    }
+
+    // Disabled Progress Bar
+    &.-disabled {
+        @include progress-variant($grey-light-80, transparent);
+    }
+
+    // Success Progress Bar
+    &.-success {
+        @include progress-variant($success-color-light-80, $success-color);
+    }
+
+    // Warning Progress Bar
+    &.-warning {
+        @include progress-variant($warning-color-light-80, $warning-color);
+    }
+
+    // Danger Progress Bar
+    &.-danger {
+        @include progress-variant($danger-color-light-80, $danger-color);
+    }
+}
+
+// Progress Bar Text
+.progress-bar-wrapper {
+    .text {
+        font-size: $small-font-size;
+        margin: 4px 0;
+    }
+}

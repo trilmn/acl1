@@ -1,0 +1,16 @@
+.black-padding-box {
+    @include size((100% / 5) 182px);
+    background-color: $success-color-light-100;
+    position: relative;
+
+    .demo-box {
+        @include size(100%);
+        background-color: $primary-color-dark-20;
+        color: $white;
+    }
+
+    .desc {
+        @include position(absolute, null 0 -50px 0);
+        @include size(100% 40px);
+    }
+}

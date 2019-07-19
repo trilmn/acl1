@@ -1,0 +1,56 @@
+<div class="sidebar">
+  <!-- Static for home page -->
+  <ul class="menu">
+    {% if page.url == "/" %}
+      {% assign c = "current" %}
+    {% else %}
+      {% assign c = "" %}
+    {% endif %}
+
+    <li class="menu-item {{ c }}">
+      <a href="/" class="link">Welcome</a>
+    </li>
+    
+    {% for item in site.data.pages %}
+      {% assign page_url = item | prepend:"/" | append:".html" %}
+      
+      {% if page_url == page.url %}
+        {% assign c = "current" %}
+      {% else %}
+        {% assign c = "" %}
+      {% endif %}
+
+      {% assign p = site.misc | where:"permalink",page_url | first %}
+
+      <li class="menu-item {{ c }}">
+        <a href="{{ page_url }}" class="link">{{ p.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <!-- Loop for all Docs -->
+  {% for doc in site.data.docs %}
+
+    <h4 class="section-title">{{ doc.title }}</h4>
+    <ul class="menu">
+    {% for item in doc.docs %}
+
+      {% assign item_url = item | prepend:"/docs/" | append:".html" %}
+
+      {% if item_url == page.url %}
+        {% assign c = "current" %}
+      {% else %}
+        {% assign c = "" %}
+      {% endif %}
+
+      {% assign p = site.docs | where:"url",item_url | first %}
+      <li class="menu-item {{ c }}">
+        <a href="{{ item_url }}" class="link">{{ p.title }}</a>
+      </li>
+
+    {% endfor %}
+    </ul>
+
+  {% endfor %}
+  
+</div>

@@ -1,0 +1,255 @@
+// Navigation
+$vertical-width: 250px;
+$active-border-style: 2px solid $primary-color;
+
+%general-nav {
+    @include display(flex);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    .link {
+        display: block;
+        padding: $spacing-normal;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .tab-item:last-child,
+    .nav-item:last-child {
+        margin: 0;
+    }
+}
+
+.nav {
+    @extend %general-nav;
+
+    .link {
+        color: $grey-dark-20;
+        padding: $spacing-small 0;
+    }
+
+    .link:hover {
+        color: $primary-color;
+    }
+
+    > .nav-item {
+        margin-right: $spacing-normal + 5;
+
+        &.-active > .link {
+            border-bottom: $active-border-style;
+            color: $primary-color;
+            font-weight: $font-weight-semibold;
+        }
+
+        &.disabled > .link {
+            color: $grey-dark-40;
+        }
+
+    }
+
+    // For vertical navigation
+    &.nav-vertical {
+        display: block;
+        width: $vertical-width;
+
+        .nav-item {
+            margin-bottom: $spacing-normal;
+            margin-right: 0;
+        }
+
+        .link {
+            display: block;
+        }
+
+        .-active.nav-item > .link {
+            border-bottom: 0;
+            border-right: $active-border-style;
+        }
+    }
+}
+
+// Tab Navigation
+.tab-nav {
+    @extend %general-nav;
+    border-bottom: $base-border;
+    padding: 0 $spacing-normal;
+    position: relative;
+    text-align: center;
+
+    > .tab-item {
+        @include transform(translateY(1px));
+        border-bottom: $base-border;
+        border-right: $base-border;
+        border-top: $base-border;
+        min-width: 120px;
+
+        &:first-child {
+            border-left: $base-border;
+            border-top-left-radius: $base-border-radius;
+        }
+
+        &:last-child {
+            border-right: $base-border;
+            border-top-right-radius: $base-border-radius;
+        }
+
+        &:hover {
+            background: $primary-color-light-100;
+        }
+
+        > .link {
+            border: 0;
+            border-radius: 0;
+            color: $primary-color;
+        }
+    }
+
+    > .-active {
+        background-color: $white;
+        border-bottom: 1px solid $white;
+
+        &:hover {
+            background: $white;
+        }
+
+        > .link {
+            color: $base-font-color;
+            cursor: default;
+        }
+    }
+
+    > .disabled {
+        background: $grey-light-100;
+        opacity: 1;
+
+        > .link {
+            color: $grey-light-40;
+        }
+    }
+}
+
+// Tab Verticle LEFT - RIGHT
+.tab-vertical {
+    @include clearfix;
+    border-bottom: 0;
+    display: block;
+    padding: $spacing-normal 0;
+    text-align: left;
+    width: $vertical-width;
+
+    > .tab-item {
+        border-bottom: 0;
+        border-left: $base-border;
+        border-right: $base-border;
+
+        &:last-child {
+            border-bottom: $base-border;
+            border-top-right-radius: 0;
+        }
+    }
+
+    &.-left {
+        border-right: $base-border;
+
+        > .tab-item {
+            @include transform(translateX(1px));
+        }
+
+        > .tab-item:last-child {
+            border-bottom-left-radius: $base-border-radius;
+        }
+
+        > .-active {
+            border-right: 1px solid $white;
+        }
+    }
+
+    &.-right {
+        border-left: $base-border;
+        float: right;
+
+        > .tab-item {
+            @include transform(translateX(-1px));
+        }
+
+        > .tab-item:first-child {
+            border-top-right-radius: $base-border-radius;
+        }
+
+        > .tab-item:last-child {
+            border-bottom-right-radius: $base-border-radius;
+        }
+
+        > .-active {
+            border-left: 1px solid $white;
+        }
+    }
+}
+
+// Dropdown menu
+.nav-item.-has-dropdown {
+    position: relative;
+
+    .link {
+        padding: $spacing-normal;
+    }
+
+    > .link::after {
+        @include triangle(12px, $grey-light-20, down);
+        content: '';
+        float: right;
+        margin-left: $spacing-normal;
+        position: relative;
+        top: 8px;
+    }
+
+    &.-open {
+        > .link {
+            background-color: $primary-color-light-100;
+            border-bottom: 0;
+            border-color: $primary-color-light-80;
+            border-radius: $base-border-radius $base-border-radius 0 0;
+            color: $primary-color;
+        }
+
+        &.-left > .dropdown-menu {
+            border-radius: 0 $base-border-radius $base-border-radius;
+            left: 0;
+        }
+
+        &.-right > .dropdown-menu {
+            border-radius: $base-border-radius 0 $base-border-radius $base-border-radius;
+            right: 0;
+        }
+    }
+}
+
+.dropdown-menu {
+    background-color: $white;
+    border: $base-border;
+    border-radius: $base-border-radius;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 200px;
+
+    .dropdown-item {
+        .link {
+            border-radius: 0;
+            color: $primary-color-dark-100;
+        }
+
+        &:hover {
+            background-color: $grey-light-100;
+        }
+
+        &.-divider {
+            border-bottom: $base-border;
+            padding: 0;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.nav-item {
+    &.-hover > .link {
+        color: $primary-color;
+        text-decoration: none;
+    }
+
+    &.-has-dropdown.-open.-left {
+        margin-left: 20px;
+        margin-right: 160px;
+    }
+}
+
+.tab-item {
+    &.-hover {
+        background-color: $primary-color-light-100;
+    }
+}
+
+.tab-wrap {
+    @include clearfix;
+}
+
+.demo-nav-wrapper {
+    margin-bottom: 180px;
+    margin-top: 30px;
+}

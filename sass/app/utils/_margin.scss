@@ -1,0 +1,7 @@
+@include spacing-generator(margin, all);
+@include spacing-generator(margin, top);
+@include spacing-generator(margin, right);
+@include spacing-generator(margin, bottom);
+@include spacing-generator(margin, left);
+@include spacing-generator(margin, horizontal);
+@include spacing-generator(margin, vertical);

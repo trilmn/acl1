@@ -1,0 +1,42 @@
+.container-fluid {
+    @include outer-container(100%);
+}
+
+.container {
+    @include media(min-width $xlarge) {
+        width: 1280px;
+    }
+
+    @include media(min-width $large max-width $xlarge) {
+        width: 1120px;
+    }
+
+    @include media(min-width $medium max-width $large) {
+        width: 960px;
+    }
+
+    @include media(min-width $normal max-width $medium) {
+        width: 768px;
+    }
+
+    @include media(min-width $small max-width $normal) {
+        width: 100%;
+    }
+}
+
+@for $i from 1 through $grid-columns {
+    .cols-#{$i} {
+        @include media(min-width $small) {
+            @include span-columns($i);
+        }
+
+        @include media(min-width $xsmall max-width $small) {
+            @include span-columns(12);
+        }
+    }
+}
+
+.row {
+    @include row;
+    margin-bottom: 20px;
+}

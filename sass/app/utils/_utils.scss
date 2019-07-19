@@ -1,0 +1,129 @@
+.txt-center {
+    text-align: center;
+}
+
+.txt-left {
+    text-align: left;
+}
+
+.txt-right {
+    text-align: right;
+}
+
+.txt-uppercase {
+    text-transform: uppercase;
+}
+
+.txt-truncate {
+    @include ellipsis(100%);
+}
+
+// Contextual Coloring Classes for Texts
+// scss-lint:disable ImportantRule
+@each $color in $base-colors {
+    .txt-#{nth($color, 1)} {
+        color: nth($color, 2) !important;
+    }
+}
+
+// Contextual Coloring Classes for Backgrounds
+@each $color in $base-colors {
+    .bg-#{nth($color, 1)} {
+        background-color: lighten(nth($color, 2), 10%) !important;
+    }
+}
+
+// Contextual Coloring Classes for SVG Icons
+@each $color in $base-colors {
+    .icon-#{nth($color, 1)} {
+        fill: nth($color, 2) !important;
+    }
+}
+// scss-lint:enable ImportantRule
+
+.disabled {
+    cursor: not-allowed;
+    opacity: .5;
+    pointer-events: none;
+
+    .link {
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+// scss-lint:disable ImportantRule
+.hide {
+    display: none !important;
+}
+
+.left {
+    float: left !important;
+}
+
+.right {
+    float: right !important;
+}
+// scss-lint:enable ImportantRule
+
+.clearfix {
+	@include clearfix;
+}
+
+// Flexbox helper classes
+.display-flex {
+    @include display(flex);
+}
+
+.align-items-center {
+    @include align-items(center);
+}
+
+.justify-content-space-between {
+    @include justify-content(space-between);
+}
+
+.justify-content-center {
+    @include justify-content(center);
+}
+
+.flex-direction-column {
+    @include flex-direction(column);
+}
+
+// Display Type Helper classes
+// scss-lint:disable ImportantRule
+.display-block {
+    display: block !important;
+}
+
+.display-inline {
+    display: inline !important;
+}
+
+.display-inline-block {
+    display: inline-block !important;
+}
+// scss-lint:enable ImportantRule
+
+// Font weight helper classes
+.font-weight-normal {
+    font-weight: $font-weight-regular;
+}
+
+.font-weight-semibold {
+    font-weight: $font-weight-semibold;
+}
+
+.font-weight-bold {
+    font-weight: $font-weight-bold;
+}
+
+.font-weight-xbold {
+    font-weight: $font-weight-xbold;
+}
+
+.font-condensed {
+    font-family: $font-condensed;
+}
+

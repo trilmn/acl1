@@ -1,0 +1,269 @@
+// Form variables
+$input-hover-bg: #fafcff;
+$input-error-bg: #f5e5e0;
+
+// Error animation
+@include keyframes(input-error) {
+    0%, 100% {
+        @include transform(translateX(0));
+    }
+
+    33% {
+        @include transform(translateX(10px));
+    }
+
+    66% {
+        @include transform(translateX(-10px));
+    }
+}
+
+
+// Form type
+.form-inline {
+    @include clearfix;
+
+    .form-group {
+        display: inline-block;
+        margin: 0 $spacing-normal $spacing-normal 0;
+        vertical-align: middle;
+    }
+
+    label,
+    input,
+    textarea {
+        display: inline-block;
+        width: auto;
+    }
+
+    .form-label {
+        margin-right: $spacing-small;
+    }
+}
+
+.form-group {
+    @include clearfix;
+    margin-bottom: $spacing-normal + 5;
+}
+
+// Label
+.form-label {
+    display: block;
+    font-weight: $font-weight-semibold;
+    margin: $spacing-small 0;
+}
+
+// Input & Textarea
+@mixin base-input($bg-color,
+                  $border-color,
+                  $inner-shadow-color) {
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+    border-radius: $base-border-radius;
+    @if $inner-shadow-color == 'none' {
+        box-shadow: none;
+    } @else {
+        box-shadow: inset 0 1px 2px 1px $inner-shadow-color;
+    }
+}
+
+.text-field,
+.textarea {
+    @include base-input($white, $grey-light-60, $grey-light-100);
+    @include transition(background-color .2s ease-in-out,
+                        box-shadow .2s ease-in-out,
+                        border .2s ease-in-out);
+    padding: 8px 12px 7px;
+    width: 100%;
+
+    @include placeholder {
+        color: $grey;
+    }
+
+    &:hover {
+        @include base-input($input-hover-bg, $primary-color-light-60, $primary-color-light-80);
+    }
+
+    &:focus {
+        @include base-input($white, $primary-color-dark-20, $primary-color-light-80);
+        outline: medium none;
+    }
+}
+
+.text-field {
+    &.-success {
+        @include base-input($white, $success-color-dark-20, $success-color-light-100);
+        background-image: url('../assets/images/pages/form/valid-icon.svg');
+        background-position: right 10px center;
+        background-repeat: no-repeat;
+        padding-right: 40px;
+    }
+
+    &.-error {
+        @include animation(input-error .5s ease-in-out);
+        @include base-input($input-error-bg, $danger-color-dark-20, $danger-color-light-100);
+        color: $danger-color-dark-20;
+        margin-bottom: $spacing-small;
+    }
+
+    &.disabled {
+        @include base-input($grey-light-100, $grey-light-80, none);
+        color: $grey;
+        opacity: 1;
+    }
+}
+
+.text-field:read-only {
+    @include base-input($grey-light-100, $grey-light-80, none);
+    color: $grey;
+    opacity: 1;
+}
+
+textarea,
+.textarea {
+    max-height: 500px;
+    max-width: 100%;
+    min-height: 100px;
+}
+
+// External error message for invalid field
+.form-error-msg {
+    color: $danger-color-dark-20;
+    font-size: $small-font-size;
+}
+
+// Radio button & checkbox
+.radio-wrapper,
+.checkbox-wrapper {
+    display: inline-block;
+}
+
+.radio-btn,
+.checkbox {
+    $size: 18px;
+    left: -9999px;
+    position: absolute;
+
+    + label {
+        cursor: pointer;
+        padding-left: $size + 5;
+        position: relative;
+
+        &::before {
+            @include size($size);
+            @include transition(all .2s ease-in-out);
+            border: 1px solid $base-border-color;
+            box-shadow: inset 0 1px 2px 0 $grey-light-60;
+            content: '';
+            left: 0;
+            position: absolute;
+            top: 0;
+        }
+
+        &::after {
+            position: absolute;
+        }
+    }
+
+    // Selected
+    &:not(:checked) {
+        + label::before {
+            background-color: $white;
+            border: 1px solid $base-border-color;
+        }
+
+        + label::after {
+            @include transform(scale(0));
+            opacity: 0;
+        }
+    }
+
+    &:checked {
+        + label::before {
+            background-color: $primary-color-dark-20;
+            border: 1px solid $primary-color-dark-20;
+            box-shadow: inset 0 1px 2px 0 $primary-color-dark-40;
+        }
+
+        + label::after {
+            @include transform(scale(1));
+            opacity: 1;
+        }
+    }
+
+    // Disabled
+    &:disabled:not(:checked) + label::before,
+    &:disabled:checked + label::before {
+        background-color: $grey-light-100;
+        border-color: $grey-light-80;
+        box-shadow: none;
+    }
+
+    &:disabled + label {
+        color: $grey;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    // Focused
+    &:checked:focus + label::before,
+    &:not(:checked):focus + label::before {
+        border: 1px solid $primary-color-dark-20;
+    }
+
+    // Hovered
+    + label:hover::before {
+        border: 1px solid $primary-color-light-60;
+    }
+}
+
+// Radio button
+.radio-btn {
+    + label {
+        &::before {
+            border-radius: $round-border-radius;
+        }
+
+        &::after {
+            @include size(6px);
+            @include transform(scale(0));
+            background-color: $white;
+            border-radius: $round-border-radius;
+            content: '';
+            left: 6px;
+            opacity: 0;
+            top: 6px;
+        }
+    }
+
+    &:disabled:checked + label::after {
+        background-color: $grey-light-40;
+    }
+}
+
+// Checkbox
+.checkbox {
+    + label {
+        &::before {
+            border-radius: $base-border-radius;
+        }
+
+        &::after {
+            @include icon(bolder);
+            @include transition(all .2s ease-in-out);
+            color: $white;
+            content: '\e908';
+            font-size: $base-font-size;
+            left: 2px;
+            top: 3px;
+        }
+    }
+
+    // Disabled
+    &:disabled:not(:checked) + label::after {
+        color: $grey-light-100;
+    }
+
+    &:disabled:checked + label::after {
+        color: $grey-light-40;
+    }
+}

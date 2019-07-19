@@ -1,0 +1,143 @@
+// Form
+label {
+    &.cols-2 {
+        margin-right: 0;
+        padding-top: 10px;
+    }
+}
+
+.textarea {
+    max-width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+h6 {
+    &.sub-title {
+        color: $grey;
+        letter-spacing: .03em;
+        margin: 30px 0 10px;
+    }
+}
+
+.form-layout {
+    &.-label {
+        .row {
+            margin-bottom: 0;
+        }
+
+        .cols-6:first-child {
+            margin-top: 31px;
+        }
+    }
+
+    p {
+        margin: 0;
+        padding-top: 11px;
+    }
+
+    .form-error-msg {
+        padding-top: 0;
+    }
+
+    .text-field {
+        width: 300px;
+
+        &.-hover {
+            @include base-input($input-hover-bg, $primary-color-light-60, $primary-color-light-80);
+        }
+
+        &.-focused {
+            @include base-input($white, $primary-color-dark-20, $primary-color-light-80);
+            outline: medium none;
+        }
+    }
+
+    .validated {
+        &.-success::after {
+            left: 270px;
+        }
+    }
+
+    .usage {
+        margin-left: 10px;
+    }
+
+    .form-validated {
+        position: relative;
+    }
+
+    .cols-5 {
+        i {
+            display: block;
+            line-height: 40px;
+            padding-top: 2px;
+        }
+    }
+
+    .radio-button {
+        &.-hovered {
+            border: 1px solid $primary-color-light-60;
+            box-shadow: inset 0 1px 2px 0 $grey-light-80;
+        }
+
+        .-selected:hover {
+            background-color: $primary-color-dark-20;
+            border: 1px solid $primary-color-light-60;
+            box-shadow: inset 0 1px 2px 0 $primary-color-dark-40;
+        }
+    }
+
+    .check-box {
+        &.-hovered {
+            border: 1px solid $primary-color-light-60;
+            box-shadow: inset 0 1px 2px 0 $grey-light-80;
+        }
+    }
+
+    &.-pikaday {
+        margin-bottom: 280px;
+    }
+}
+
+.form-example {
+    .username {
+        width: 380px;
+    }
+}
+
+// Dropdown
+.dropdown {
+    &.active {
+        margin-bottom: 180px;
+    }
+}
+
+.dropdown-selection {
+    .selection {
+        width: 100%;
+    }
+}
+
+// Datepicker
+.datepicker-demo {
+    padding-bottom: 220px;
+
+    .datepicker {
+        min-width: 308px;
+    }
+}
+
+// Form Usage
+.form-usage {
+    margin: 0 auto;
+    width: 720px;
+
+    .label {
+        text-transform: uppercase;
+    }
+
+    .textarea {
+        min-height: 102px;
+    }
+}

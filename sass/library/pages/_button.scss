@@ -1,0 +1,38 @@
+.buttons-showcase {
+    font-size: 0;
+
+    > .btn,
+      .btn-flat {
+        margin-right: $spacing-large;
+    }
+}
+
+.-single-line {
+    @include align-items(flex-end);
+    @include display(flex);
+}
+
+.different-state {
+	margin: ($spacing-normal + 5) 0;
+
+    .state {
+        color: $grey-light-20;
+        margin-right: $spacing-xlarge;
+
+        .btn {
+            margin-bottom: $spacing-small;
+            pointer-events: none;
+        }
+
+        &.-hover .btn {
+            opacity: .8;
+        }
+
+        &.-active .btn {
+            @include transform(translateY(1px));
+            @include transform(scale(.99));
+            background-color: lighten($grey-light-80, 10%);
+            box-shadow: inset 0 2px 0 0 rgba($grey-light-40, .2);
+        }
+    }
+}

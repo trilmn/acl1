@@ -1,0 +1,9 @@
+.status-demo {
+    @include align-items(center);
+    @include display(flex);
+    padding: 40px 0;
+
+    .status {
+        @include flex-grow(1);
+    }
+}

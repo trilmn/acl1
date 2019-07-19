@@ -1,0 +1,15 @@
+// OpenSans
+@include font-face('OpenSans', '../fonts/OpenSansRegular', 400, normal);
+@include font-face('OpenSans', '../fonts/OpenSansItalic', 400, italic);
+@include font-face('OpenSans', '../fonts/OpenSansSemibold', 600, normal);
+@include font-face('OpenSans', '../fonts/OpenSansBold', 700, normal);
+@include font-face('OpenSans', '../fonts/OpenSansExtraBold', 800, normal);
+
+// Icon font
+@include font-face("SuperTightIconset", "../fonts/super-tight-iconset", $file-formats: eot svg ttf woff);
+
+// Akrobat
+@include font-face("Akrobat", "/fonts/Akrobat/Akrobat-Regular.otf", 400, $file-formats: eot);
+@include font-face("Akrobat", "/fonts/Akrobat/Akrobat-SemiBold.otf", 600, $file-formats: eot);
+@include font-face("Akrobat", "/fonts/Akrobat/Akrobat-Bold.otf", 700, $file-formats: eot);
+@include font-face("Akrobat", "/fonts/Akrobat/Akrobat-ExtraBold.otf", 800, $file-formats: eot);

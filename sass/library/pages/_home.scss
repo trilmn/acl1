@@ -1,0 +1,27 @@
+.tldr {
+    @include align-items(flex-start);
+    margin-top: $spacing-large;
+
+    > .title {
+        margin-right: $spacing-normal;
+    }
+}
+
+.welcome-article {
+    line-height: 1.8;
+
+    h3 {
+        margin-bottom: $base-font-size;
+        margin-top: $base-line-height * $base-font-size * 2;
+    }
+
+    h6 {
+        margin-bottom: $h6-font-size;
+        margin-top: $base-line-height * $base-font-size;
+    }
+
+    .section-title {
+        margin-bottom: 10px;
+        margin-top: 30px;
+    }
+}

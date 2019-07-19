@@ -1,0 +1,27 @@
+// Cards
+.card {
+    @include info-box($white, $grey-light-80, $base-font-color);
+    @include transition(all .2s ease-in-out);
+    padding: $spacing-normal;
+    width: 100%;
+
+    &:hover {
+        box-shadow: 0 1px 4px rgba($grey-light-20, .5);
+    }
+
+    &.-primary {
+        @include info-box($primary-color-light-100, $primary-color-light-80, $primary-color-dark-20);
+    }
+
+    &.-success {
+        @include info-box($success-color-light-100, $success-color-light-80, $success-color-dark-40);
+    }
+
+    &.-warning {
+        @include info-box($warning-color-light-100, $warning-color-light-80, $warning-color-dark-20);
+    }
+
+    &.-danger {
+        @include info-box($danger-color-light-100, $danger-color-light-80, $danger-color-dark-40);
+    }
+}

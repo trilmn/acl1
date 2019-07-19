@@ -1,0 +1,53 @@
+// This is where we set all our z-index values as variables
+// and use them in our SCSS. No z-index are to be set outside
+// of this file. Do not edit the predefined z-index variables,
+// only add z-index applications that use these variables.
+//
+// This scale is for keeping things tidy so we can easily have
+// a picture of our application's layering systems.
+
+// The z-index scale
+$z-index-1:                                    100;
+$z-index-2:                                    200;
+$z-index-3:                                    300;
+$z-index-4:                                    400;
+$z-index-5:                                    500;
+$z-index-6:                                    600;
+$z-index-7:                                    700;
+$z-index-8:                                    800;
+$z-index-9:                                    900;
+$z-index-10:                                  1000;
+
+// The z-index applications
+// (Please put your z-index application where appropriate)
+
+// z-index 1
+
+// z-index 2
+$z-index-calendar-dropdown:             $z-index-2;
+$z-index-dropdown-list:                 $z-index-2;
+$z-index-hover-color-scheme:            $z-index-2;
+$z-index-modal-content:                 $z-index-2;
+
+// z-index 3
+$z-index-datepicker-field:              $z-index-3;
+$z-index-dropdown-field:                $z-index-3;
+
+// z-index 4
+
+// z-index 5
+
+// z-index 6
+
+// z-index 7
+
+// z-index 8
+$z-index-tooltip:                       $z-index-8;
+$z-index-bar-load:               		$z-index-8;
+
+// z-index 9
+$z-index-fullscreen-load:               $z-index-9;
+$z-index-modal:                         $z-index-10;
+
+// z-index 10
+$z-index-toast:                    $z-index-10;

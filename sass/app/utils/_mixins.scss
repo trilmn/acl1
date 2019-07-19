@@ -1,0 +1,56 @@
+@mixin icon($font-weight: normal) {
+    // $font-weight is optional and is defaulted to `normal`.
+    // Since we are using line icons, some of the displaying icons
+    // might appear too thin in various circumstances, thus, you
+    // could pass in `bold` or `bolder` here to make the stroke
+    // thicker and the icon to stand out.
+    font-family: $icon-stack;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: $font-weight;
+    line-height: 1;
+    margin-right: 5px;
+    speak: none;
+    text-transform: none;
+}
+
+// For applying in Card, Well & Toast
+// since they're sharing the same styles
+@mixin info-box($background-color, $border-color, $text-color) {
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    border-radius: $base-border-radius;
+    color: $text-color;
+}
+
+@mixin spacing-output($spacing-type, $orientation, $value: 0) {
+    @if $orientation == all {
+        #{$spacing-type}: $value;
+    } @else if $orientation == top {
+        #{$spacing-type}-#{$orientation}: $value;
+    } @else if $orientation == right {
+        #{$spacing-type}-#{$orientation}: $value;
+    } @else if $orientation == bottom {
+        #{$spacing-type}-#{$orientation}: $value;
+    } @else if $orientation == left {
+        #{$spacing-type}-#{$orientation}: $value;
+    } @else if $orientation == horizontal {
+        #{$spacing-type}-left: $value;
+        #{$spacing-type}-right: $value;
+    } @else if $orientation == vertical {
+        #{$spacing-type}-bottom: $value;
+        #{$spacing-type}-top: $value;
+    }
+}
+
+@mixin spacing-generator($spacing-type, $orientation) {
+    .#{$spacing-type}-#{$orientation}-0 {
+        @include spacing-output($spacing-type, $orientation);
+    }
+
+    @each $size, $value in $base-spacings {
+        .#{$spacing-type}-#{$orientation}-#{$size} {
+            @include spacing-output($spacing-type, $orientation, $value);
+        }
+    }
+}

@@ -1,0 +1,27 @@
+.badge-demo {
+    margin: 30px 0 20px;
+
+    div {
+        display: inline-block;
+        font-weight: $font-weight-bold;
+    }
+
+    .label {
+        position: relative;
+    }
+
+    .icon {
+        @include icon(bold);
+        color: $grey-light-20;
+        font-size: 18px;
+        position: relative;
+
+        &::before {
+            @include position(relative, 2px null null null);
+        }
+    }
+
+    .bell-notif {
+        top: 5px;
+    }
+}

@@ -1,0 +1,154 @@
+// 50 Shades of Primary Colors
+$primary-color:             #1e99eb;
+
+$primary-color-dark-20:     #1077bc;
+$primary-color-dark-40:     #0b5383;
+$primary-color-dark-60:     #083c5e;
+$primary-color-dark-80:     #052438;
+$primary-color-dark-100:    #020c13;
+
+$primary-color-light-20:    #56b3f0;
+$primary-color-light-40:    #7cc4f4;
+$primary-color-light-60:    #8eccf5;
+$primary-color-light-80:    #c7e6fa;
+$primary-color-light-100:   #ecf7fd;
+
+// 50 Shades of Grey
+$grey:                      #6d818e;
+
+$grey-dark-20:              #51626d;
+$grey-dark-40:              #38444c;
+$grey-dark-60:              #293137;
+$grey-dark-80:              #181d21;
+$grey-dark-100:             #08090b;
+
+$grey-light-20:             #91a0aa;
+$grey-light-40:             #a9b5bd;
+$grey-light-60:             #b5bfc6;
+$grey-light-80:             #dadfe3;
+$grey-light-100:            #f2f4f5;
+
+// 50 Shades of Success Colors
+$success-color:                   #85b257;
+
+$success-color-dark-20:           #709a47;
+$success-color-dark-40:           #5c7e3a;
+$success-color-dark-60:           #47622d;
+$success-color-dark-80:           #334620;
+$success-color-dark-100:          #1f2a13;
+
+$success-color-light-20:          #99bf73;
+$success-color-light-40:          #adcc8f;
+$success-color-light-60:          #c2d8ab;
+$success-color-light-80:          #d6e5c7;
+$success-color-light-100:         #ebf2e3;
+
+// 50 Shades of Warning Colors
+$warning-color:                   #c99b40;
+
+$warning-color-dark-20:           #af8531;
+$warning-color-dark-40:           #8f6d28;
+$warning-color-dark-60:           #6f551f;
+$warning-color-dark-80:           #503d16;
+$warning-color-dark-100:          #30240d;
+
+$warning-color-light-20:          #d2ac60;
+$warning-color-light-40:          #dbbd80;
+$warning-color-light-60:          #e4cda0;
+$warning-color-light-80:          #eddebf;
+$warning-color-light-100:         #f6eedf;
+
+// 50 Shades of Danger Colors
+$danger-color:                    #c46345;
+
+$danger-color-dark-20:            #ab5136;
+$danger-color-dark-40:            #8c422c;
+$danger-color-dark-60:            #6d3422;
+$danger-color-dark-80:            #4e2518;
+$danger-color-dark-100:           #2f160f;
+
+$danger-color-light-20:           #cd7b62;
+$danger-color-light-40:           #d89783;
+$danger-color-light-60:           #e2b1a2;
+$danger-color-light-80:           #ebcbc1;
+$danger-color-light-100:          #f5e5e0;
+
+$white:                        #fff;
+$black:                        #000;
+
+$base-colors: ('grey', $grey),
+              ('primary', $primary-color),
+              ('success', $success-color),
+              ('warning', $warning-color),
+              ('danger', $danger-color);
+
+// Typo
+$font-stack: 'OpenSans', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Helvetica Neue', 'Droid Sans', Helvetica, Arial, sans-serif;
+$font-condensed: 'Akrobat', 'OpenSans', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Helvetica Neue', 'Droid Sans', Helvetica, Arial, sans-serif;
+
+$base-font-family: $font-stack;
+$header-font-family: $font-stack;
+
+// Grid Columns
+$grid-columns:              12;
+
+// Sizes
+$xsmall:             em(320px);
+$small:              em(640px);
+$normal:             em(960px);
+$medium:            em(1024px);
+$large:             em(1440px);
+$xlarge:            em(1920px);
+
+// Font Sizes
+$base-font-size:          13px;
+$h1-font-size:            $base-font-size + 25;     //38px
+$h2-font-size:            $base-font-size + 14;     //27px
+$h3-font-size:            $base-font-size + 7;      //20px
+$h4-font-size:            $base-font-size + 2;      //15px
+$h5-font-size:            $base-font-size;          //13px
+$h6-font-size:            $base-font-size - 2;      //11px
+$small-font-size:         $base-font-size - 2;      //11px
+$tiny-font-size:          $base-font-size - 4;      //9px
+
+// Line Height
+$base-line-height:         1.5;
+$header-line-height:      1.35;
+
+// Font Weight Scale
+$font-weight-regular:      400;
+$font-weight-semibold:     600;
+$font-weight-bold:         700;
+$font-weight-xbold:        800;
+
+// Base border radius
+$base-border-radius:       3px;
+$round-border-radius:      50%;
+
+// Spacing
+$spacing-small:            5px;
+$spacing-normal:          10px;
+$spacing-large:           20px;
+$spacing-xlarge:          30px;
+$spacing-jumbo:           40px;
+
+// Base spacings
+$base-spacings: ('small', $spacing-small),
+                ('normal', $spacing-normal),
+                ('large', $spacing-large),
+                ('xlarge', $spacing-xlarge),
+                ('jumbo', $spacing-jumbo);
+
+// Border
+$base-border-color:         $grey-light-80;
+$base-border: 1px solid $base-border-color;
+
+// Color Scheme
+$base-font-color:    $grey-dark-80;
+$base-link-color:   $primary-color;
+
+$base-border-color: $grey-light-80;
+$quote-border-left: $primary-color;
+
+// Icon Stack
+$icon-stack: 'SuperTightIconset';

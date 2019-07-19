@@ -1,0 +1,343 @@
+// Anduin Tooltip
+// Based on: Simple Hint v2.1 | Copyright (c) 2014 Catalin Covic | https://github.com/catc
+
+// colors
+$default-color: $primary-color-dark-80;
+
+// delays
+$delay-short: .4s;
+$delay-med: 1s;
+$delay-long: 1.5s;
+
+// sizing
+@mixin tooltip-sizing($tip-width) {
+    width: $tip-width;
+    white-space: initial;
+}
+
+// ---- coloring----
+@mixin tooltip-color($color) {
+    &.-bottom::before {
+        border-bottom-color: $color;
+    }
+
+    &.-top::before {
+        border-top-color: $color;
+    }
+
+    &.-right::before {
+        border-right-color: $color;
+    }
+
+    &.-left::before {
+        border-left-color: $color;
+    }
+
+    &::after {
+        background: $color;
+    }
+}
+
+// ---- positioning ----
+.tooltip {
+    cursor: pointer;
+    position: relative;
+
+    // Styling text content
+    &[data-tip] {
+        &::after,
+        &::before {
+            display: inline-block;
+            pointer-events: none;
+            position: absolute;
+            visibility: hidden;
+        }
+
+        &::before {
+            border: 5px solid transparent;
+            content: '';
+            z-index: $z-index-tooltip;
+        }
+
+        &::after {
+            background: $default-color;
+            border-radius: $base-border-radius;
+            color: $white;
+            content: attr(data-tip);
+            font-size: $base-font-size - 2;
+            font-weight: $font-weight-semibold;
+            letter-spacing: initial;
+            line-height: 1.5em;
+            padding: $spacing-small $spacing-normal;
+            text-align: center;
+            text-transform: initial;
+            white-space: nowrap;
+            z-index: $z-index-tooltip;
+        }
+
+        &:hover::after,
+        &:hover::before {
+            visibility: visible;
+        }
+    }
+
+    &[class*="-top"] {
+        &::before {
+            border-top-color: $default-color;
+            bottom: 100%;
+        }
+
+        &::after {
+            bottom: 100%;
+            margin-bottom: $spacing-normal;
+        }
+    }
+
+    &[class*="-bottom"] {
+        &::before {
+            border-bottom-color: $default-color;
+            top: 100%;
+        }
+
+        &::after {
+            margin-top: $spacing-normal;
+            top: 100%;
+        }
+    }
+
+    &[class*="-left"] {
+        &::before {
+            left: $spacing-normal;
+            right: auto;
+        }
+
+        &::after {
+            @include transform(translateX(0));
+            left: 0;
+            right: auto;
+        }
+    }
+
+    &[class*="-right"] {
+        &::before {
+            left: auto;
+            right: $spacing-normal;
+        }
+
+        &::after {
+            @include transform(translateX(0));
+            left: auto;
+            right: 0;
+        }
+    }
+
+    &.-bottom,
+    &.-top {
+        &::before {
+            margin-right: -$spacing-small;
+            right: 50%;
+        }
+
+        &::after {
+            @include transform(translateX(-50%));
+            left: 50%;
+        }
+    }
+
+    &.-left,
+    &.-right {
+        &::before {
+            margin-top: -$spacing-small;
+            top: 50%;
+        }
+
+        &::after {
+            @include transform(translateY(-50%));
+            top: 50%;
+        }
+    }
+
+    &.-left {
+        &::before {
+            border-left-color: $default-color;
+            left: 0;
+            margin-left: -$spacing-normal;
+        }
+
+        &::after {
+            left: auto;
+            margin-right: $spacing-normal;
+            right: 100%;
+        }
+    }
+
+    &.-right {
+        &::before {
+            border-right-color: $default-color;
+            margin-right: -$spacing-normal;
+            right: 0;
+        }
+
+        &::after {
+            left: 100%;
+            margin-left: $spacing-normal;
+            right: auto;
+        }
+    }
+
+    // ---- persist ----
+    &.-persist {
+        &::before,
+        &::after {
+            visibility: visible;
+        }
+    }
+
+    // ----  mobile ----
+    &.-mobile {
+        &::after,
+        &::before {
+            @media only screen and (max-width : 768px) {
+                display: none;
+            }
+        }
+    }
+
+    &.-small::after {
+        @include tooltip-sizing(200px);
+    }
+
+    &.-medium::after {
+        @include tooltip-sizing(300px);
+    }
+
+    &.-large::after {
+        @include tooltip-sizing(400px);
+    }
+
+    &.-xlarge::after {
+        @include tooltip-sizing(500px);
+    }
+
+
+    // ---- delay on default hints ----
+    &.-d-short {
+        &:hover::after,
+        &:hover::before {
+            @include transition(visibility 0 $delay-short ease);
+        }
+    }
+
+    &.-d-med {
+        &:hover::after,
+        &:hover::before {
+            @include transition(visibility 0 $delay-med ease);
+        }
+    }
+
+    &.-d-long {
+        &:hover::after,
+        &:hover::before {
+            @include transition(visibility 0 $delay-long ease);
+        }
+    }
+
+
+    // ---- fade in + delay ----
+    $fadein-delay: .2s;
+
+    &.-fade {
+        // fade in transition
+        &::before,
+        &::after {
+            @include transition(opacity $fadein-delay ease, visibility $fadein-delay ease);
+            opacity: 0;
+        }
+
+        &:hover::before,
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+
+
+    // ---- animation + delay ----
+    $animation-duration: .3s;
+
+    &.-anim {
+
+        &.-top::after,
+        &.-top::before {
+            @include transition(opacity $animation-duration ease-out, visibility $animation-duration ease-out, bottom $animation-duration ease-out);
+            bottom: 125%;
+            opacity: 0;
+        }
+
+        &.-top:hover::after,
+        &.-top:hover::before {
+            bottom: 100%;
+            opacity: 1;
+        }
+
+        &.-bottom::after,
+        &.-bottom::before {
+            @include transition(opacity $animation-duration ease, visibility $animation-duration ease, top $animation-duration ease);
+            opacity: 0;
+            top: 125%;
+        }
+
+        &.-bottom:hover::after,
+        &.-bottom:hover::before {
+            opacity: 1;
+            top: 100%;
+        }
+
+
+        &.-right::after,
+        &.-right::before {
+            @include transition(opacity $animation-duration ease-out, visibility $animation-duration ease, margin $animation-duration ease-out);
+            margin-left: $spacing-large + 5;
+            margin-right: -$spacing-large + 5;
+            opacity: 0;
+        }
+
+        &.-right:hover::after,
+        &.-right:hover::before {
+            margin-left: $spacing-normal;
+            margin-right: -$spacing-normal;
+            opacity: 1;
+        }
+
+        &.-left::after,
+        &.-left::before {
+            @include transition(opacity $animation-duration ease-out, visibility $animation-duration ease, margin $animation-duration ease-out);
+            margin-left: -$spacing-large + 5;
+            margin-right: $spacing-large + 5;
+            opacity: 0;
+        }
+
+        &.-left:hover::after,
+        &.-left:hover::before {
+            margin-left: -$spacing-normal;
+            margin-right: $spacing-normal;
+            opacity: 1;
+        }
+    }
+
+    // Coloring
+    &.-primary {
+        @include tooltip-color($primary-color);
+    }
+
+    &.-success {
+        @include tooltip-color($success-color);
+    }
+
+    &.-warning {
+        @include tooltip-color($warning-color);
+    }
+
+    &.-danger {
+        @include tooltip-color($danger-color);
+    }
+}

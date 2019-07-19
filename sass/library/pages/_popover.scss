@@ -1,0 +1,50 @@
+.popover-showcase {
+	@include display(flex);
+	@include flex-wrap(wrap);
+	position: relative;
+
+	> .popover:not(.-demo) {
+		@include position(relative, initial initial initial initial);
+		@include transform(none);
+		margin-right: 20px;
+		opacity: 1;
+		visibility: visible;
+
+		&.-xlarge {
+			margin-top: 30px;
+		}
+	}
+
+	&.-interactive {
+		@include align-items(center);
+		@include justify-content(center);
+		margin-bottom: 250px;
+		margin-top: 150px;
+		width: 100%;
+	}
+}
+
+.arrow-showcase {
+	> .popover {
+		margin-bottom: 30px;
+
+		&.-tall {
+			height: 120px;
+		}
+	}
+}
+
+.popover-wrapper {
+	overflow: visible;
+}
+
+.nav {
+	&.-centered {
+		@include flex-wrap(wrap);
+		@include justify-content(center);
+	}
+}
+
+.text-heavy-popover {
+    padding: $spacing-large - 5;
+}

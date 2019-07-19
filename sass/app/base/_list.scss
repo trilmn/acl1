@@ -1,0 +1,19 @@
+.list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	> .item {
+		padding: 0 0 $spacing-normal;
+
+		&:last-child {
+			padding-bottom: 0;
+		}
+	}
+
+	> .divider {
+		border-bottom: 1px solid $grey-light-80;
+		margin-bottom: $spacing-normal;
+		padding: 0;
+	}
+}

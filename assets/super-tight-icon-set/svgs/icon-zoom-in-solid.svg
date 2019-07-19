@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Zoom In solid</title>
+    <path d="M7,5 L7,3 L5,3 L5,5 L3,5 L3,7 L5,7 L5,9 L7,9 L7,7 L9,7 L9,5 L7,5 Z M16,15.293 L10.579,9.872 C11.464,8.827 12,7.477 12,6 C12,2.686 9.314,0 6,0 C2.686,0 0,2.686 0,6 C0,9.314 2.686,12 6,12 C7.477,12 8.827,11.464 9.872,10.579 L15.293,16 L16,15.293 Z"></path>
+</svg>

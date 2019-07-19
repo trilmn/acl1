@@ -1,0 +1,40 @@
+// Status component
+
+@mixin status-variant($background-color, $text-color) {
+    color: $text-color;
+
+    &::before {
+        background-color: $background-color;
+    }
+}
+
+.status {
+    @include align-items(center);
+    @include display(flex);
+    @include status-variant($grey-light-60, $grey);
+
+    &::before {
+        @include size(7px);
+        border-radius: $round-border-radius;
+        content: '';
+        display: inline-block;
+        float: left;
+        margin-right: $spacing-small;
+    }
+
+    &.-success {
+        @include status-variant($success-color, $success-color);
+    }
+
+    &.-warning {
+        @include status-variant($warning-color, $warning-color);
+    }
+
+    &.-danger {
+        @include status-variant($danger-color, $danger-color);
+    }
+
+    &.-primary {
+        @include status-variant($primary-color, $primary-color-dark-20);
+    }
+}

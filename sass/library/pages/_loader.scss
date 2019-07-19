@@ -1,0 +1,21 @@
+.loader-demo {
+    // Fullscreen loader
+    .loader-container {
+        display: block;
+    }
+
+    // Loading general
+    .loader-general {
+        text-align: left;
+    }
+
+    // Loading bar
+    .loader-bar {
+        position: relative;
+    }
+
+    // Loading Initial
+    .loader-initial {
+        margin-left: 0;
+    }
+}

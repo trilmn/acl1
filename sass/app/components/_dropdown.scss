@@ -1,0 +1,91 @@
+// Dropdown variables
+$dropdown-height:                   36px;
+$dropdown-bg:                       linear-gradient($white, $grey-light-100);
+$dropdown-bg-active:                linear-gradient($grey-light-100, $white);
+
+// Dropdown
+.dropdown {
+    cursor: pointer;
+    position: relative;
+
+    &.disabled {
+        .dropdown-selection > .selection {
+            background-color: $grey-light-100;
+            color: $grey;
+        }
+    }
+
+    // Selection
+    .dropdown-selection {
+        background-image: $dropdown-bg;
+        color: $base-font-color;
+        position: relative;
+        z-index: $z-index-dropdown-field;
+
+        &::after {
+            @include position(absolute, 17px 12px null null);
+            @include triangle(10px, $grey, down);
+            content: '';
+        }
+
+        :focus {
+            @include base-input($white, $grey-light-60, none);
+            outline: medium none;
+        }
+
+        > .selection {
+            @include base-input(transparent, $grey-light-60, none);
+            background-image: $dropdown-bg;
+            cursor: pointer;
+            height: $dropdown-height;
+            padding: 8px 12px 7px;
+            position: relative;
+            width: 100%;
+        }
+
+        > .selection:focus {
+            outline: none;
+        }
+
+        > .-active {
+            background-image: $dropdown-bg-active;
+            border-radius: $base-border-radius $base-border-radius 0 0;
+        }
+    }
+
+    // List option
+    > .list {
+        @include base-input($white, $base-border-color, none);
+        border-radius: 0 0 $base-border-radius $base-border-radius;
+        display: none;
+        list-style-type: none;
+        margin: 0;
+        padding: $spacing-small 0;
+        position: absolute;
+        top: $dropdown-height - 1;
+        width: 100%;
+        z-index: $z-index-dropdown-list;
+
+        &.-show {
+            display: block;
+        }
+
+        > .item {
+            margin-bottom: 4px;
+            outline: medium none;
+            padding: 4px 12px;
+        }
+
+        .item:hover {
+            background-color: rgba($primary-color, .1);
+        }
+
+        > .-selected {
+            background-color: rgba($primary-color, .1);
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,136 @@
+html {
+    font-size: $base-font-size;
+}
+
+body {
+    color: $base-font-color;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    font-weight: $font-weight-regular;
+    line-height: $base-line-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $header-font-family;
+    font-weight: $font-weight-regular;
+    line-height: $header-line-height;
+    margin: 0;
+}
+
+h1 {
+    font-size: $h1-font-size;
+}
+
+h2 {
+    font-size: $h2-font-size;
+}
+
+h3 {
+    font-size: $h3-font-size;
+    font-weight: $font-weight-semibold;
+}
+
+h4 {
+    font-size: $h4-font-size;
+    font-weight: $font-weight-bold;
+}
+
+h5 {
+    font-size: $h5-font-size;
+    font-weight: $font-weight-semibold;
+}
+
+h6 {
+    font-size: $h6-font-size;
+    font-weight: $font-weight-bold;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+p {
+    margin: 0 0 ($spacing-normal + 5);
+}
+
+small,
+.small {
+    font-size: $small-font-size;}
+
+.tiny {
+    font-size: $tiny-font-size;
+}
+
+a {
+    @include transition(all .2s ease-in-out);
+    color: $base-link-color;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
+}
+
+ul,
+ol {
+    padding-left: 20px;
+}
+
+hr {
+    border-bottom: $base-border;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    margin: $spacing-normal 0;
+}
+
+img,
+picture {
+    margin: 0;
+    max-width: 100%;
+}
+
+blockquote {
+    border-left: 2px solid $quote-border-left;
+    font-size: 20px;
+    font-style: italic;
+    margin-left: 0;
+    padding: 24px 0 24px 30px;
+}
+
+cite {
+    color: lighten($base-font-color, 25);
+    font-style: italic;
+
+    &::before {
+        content: '\2014 \00A0';
+    }
+}
+
+code {
+    background-color: $grey-light-100;
+    border-bottom: 1px solid $grey-light-80;
+    border-radius: $base-border-radius;
+    color: $grey;
+    font-style: normal;
+    padding: 2px 5px;
+    white-space: nowrap;
+}
+
+strong {
+    font-weight: $font-weight-bold;
+}
+
+.no-bullet {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

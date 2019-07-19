@@ -1,0 +1,148 @@
+%general-btn {
+    @include transition(none);
+    border-radius: $base-border-radius;
+    cursor: pointer;
+    display: inline-block;
+    font-size: $base-font-size - 1;
+    font-weight: $font-weight-semibold;
+    line-height: 1;
+    padding: 9px 12px;
+
+    &:hover {
+        opacity: .8;
+        text-decoration: none;
+    }
+
+    &:active {
+        @include transform(translateY(1px));
+        @include transform(scale(.99));
+    }
+
+    &.-large {
+        padding: 12px 16px;
+    }
+
+    > .icon-svg {
+        margin-right: 3px;
+        vertical-align: bottom;
+    }
+}
+
+@mixin base-btn($background-color,
+                $border-color,
+                $font-color,
+                $outter-shadow-color,
+                $inner-shadow-color) {
+    background-color: lighten($background-color, 2%);
+    border: 1px solid $border-color;
+    box-shadow: 0 1px 2px 0 rgba($outter-shadow-color, .5),
+            inset 0 -2px 0 0 rgba($inner-shadow-color, .2);
+    color: $font-color;
+
+    &:active {
+        background-color: $background-color;
+        box-shadow: inset 0 2px 0 0 rgba($inner-shadow-color, .2);
+    }
+}
+
+@mixin flat-btn($background-color, $border-color, $font-color) {
+    background-color: $background-color;
+    border: solid 1px $border-color;
+    color: $font-color;
+
+    &:active {
+        background-color: $background-color;
+    }
+}
+
+.btn {
+    @extend %general-btn;
+    @include base-btn(lighten($grey-light-80, 10%), lighten($grey-light-60, 5%), $grey-dark-20, rgba($grey-light-20, .5), $grey-light-40);
+
+    &.-primary {
+        @include base-btn(lighten($primary-color, 5%), $primary-color-dark-20, $white, rgba($primary-color-light-20, .5), $primary-color-dark-60);
+    }
+
+    &.-success {
+        @include base-btn(lighten($success-color, 5%), $success-color-dark-20, $white, rgba($success-color-light-20, .7), $success-color-dark-60);
+    }
+
+    &.-warning {
+        @include base-btn(lighten($warning-color, 5%), $warning-color-dark-20, $white, rgba($warning-color-light-20, .7), $warning-color-dark-60);
+    }
+
+    &.-danger {
+        @include base-btn(lighten($danger-color, 5%), $danger-color-dark-20, $white, rgba($danger-color-light-20, .7), $danger-color-dark-60);
+    }
+
+    &.-plain {
+        background: none;
+        border: 0;
+        box-shadow: none;
+        text-shadow: none;
+
+        &:hover {
+            background-color: $grey-light-100;
+        }
+
+        > .icon-svg {
+            margin-right: 0;
+        }
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: .5;
+        pointer-events: none;
+    }
+}
+
+.btn-flat {
+    @extend %general-btn;
+    @include flat-btn(lighten($grey-light-80, 10%), $grey-light-60, $grey-dark-20);
+
+    &.-primary {
+        @include flat-btn(lighten($primary-color, 5%), $primary-color-dark-20, $white);
+    }
+
+    &.-success {
+        @include flat-btn(lighten($success-color, 5%), $success-color-dark-20, $white);
+    }
+
+    &.-warning {
+        @include flat-btn(lighten($warning-color, 5%), $warning-color-dark-20, $white);
+    }
+
+    &.-danger {
+        @include flat-btn(lighten($danger-color, 5%), $danger-color-dark-20, $white);
+    }
+}
+
+.btn-group {
+    @include display(flex);
+    font-size: 0;
+
+    > .btn,
+    > .btn-flat {
+        margin-right: $spacing-normal;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &.-right {
+        @include justify-content(flex-end);
+
+        > .btn,
+        > .btn-flat {
+            margin-left: $spacing-normal;
+            margin-right: 0;
+        }
+
+        > .btn:first-child,
+        > .btn-flat:first-child {
+            margin-left: 0;
+        }
+    }
+}

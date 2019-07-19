@@ -1,0 +1,20 @@
+.toast-showcase {
+    .toast {
+        margin-left: 0;
+    }
+
+    &.-dismiss {
+        margin-bottom: 52px;
+        margin-top: 40px;
+    }
+
+    > .type {
+        color: $grey-light-20;
+        display: block;
+        margin-bottom: 40px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

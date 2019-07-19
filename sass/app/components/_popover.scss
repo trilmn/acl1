@@ -1,0 +1,192 @@
+$popover-small:  200px;
+$popover-medium: 300px;
+$popover-large:  400px;
+$popover-xlarge: 500px;
+
+.popover {
+    @include filter(drop-shadow(0 0 1px rgba($black, .27)));
+    @include size($popover-small auto);
+    @include transform(translate(-50%, $spacing-normal));
+    @include transition(all .2s cubic-bezier(.175, .885, .22, 1.275) .01s);
+    background-color: $white;
+    border-radius: $base-border-radius;
+    box-shadow: 0 2px 2px 0 rgba($black, .04);
+    left: 50%;
+    opacity: 0;
+    padding: $spacing-normal;
+    position: absolute;
+    visibility: hidden;
+
+    &::after {
+        @include position(absolute, -6px null null 50%);
+        @include triangle(12px, $white, up);
+        content: '';
+        margin-left: -3px;
+    }
+
+    &.-medium {
+        @include size($popover-medium auto);
+    }
+
+    &.-large {
+        @include size($popover-large auto);
+    }
+
+    &.-xlarge {
+        @include size($popover-xlarge auto);
+    }
+
+    // Popped
+    &.popped {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    // Popover Position
+    &.-bottom-left {
+        @include transform(translateY($spacing-normal));
+        left: initial;
+        right: 0;
+
+        &::after {
+            @include position(absolute, -6px $spacing-normal null initial);
+        }
+    }
+
+    &.-bottom-right {
+        @include transform(translate(0%, $spacing-normal));
+        left: 0;
+        right: initial;
+
+        &::after {
+            @include position(absolute, -6px null null $spacing-normal);
+        }
+    }
+
+    &.-top-left::after,
+    &.-top::after,
+    &.-top-right::after {
+        border-bottom: 0;
+    }
+
+    &.-top-left {
+        @include transform(translateY(-100%));
+        left: initial;
+        right: 0;
+        top: -$spacing-normal;
+
+        &::after {
+            @include position(absolute, initial $spacing-normal -6px initial);
+            @include triangle(12px, $white, down);
+            margin-left: -3px;
+        }
+    }
+
+    &.-top {
+        @include transform(translate(-50%, -100%));
+        left: 50%;
+        top: -$spacing-normal;
+
+        &::after {
+            @include position(absolute, initial null -6px 50%);
+            @include triangle(12px, $white, down);
+            margin-left: -3px;
+        }
+    }
+
+    &.-top-right {
+        @include transform(translateY(-100%));
+        left: 0;
+        top: -$spacing-normal;
+
+        &::after {
+            @include position(absolute, initial null -6px $spacing-normal);
+            @include triangle(12px, $white, down);
+            margin-left: -3px;
+        }
+    }
+
+    &.-left,
+    &.-left-top,
+    &.-left-bottom {
+        @include transform(translate(-100%, -50%));
+        bottom: initial;
+        left: -$spacing-normal;
+        top: 50%;
+
+        &::after {
+            @include position(absolute, 50% -12px null initial);
+            @include triangle(12px, $white, right);
+            margin-top: -6px;
+        }
+    }
+
+    &.-left-top {
+        @include transform(translate(-100%, -100%));
+        top: initial;
+    }
+
+    &.-left-bottom {
+        @include transform(translate(-100%, 0%));
+        top: 0;
+    }
+
+    &.-right,
+    &.-right-top,
+    &.-right-bottom {
+        @include transform(translate(100%, -50%));
+        bottom: initial;
+        left: initial;
+        right: -$spacing-normal;
+        top: 50%;
+
+        &::after {
+            @include position(absolute, 50% null null -9px);
+            @include triangle(12px, $white, left);
+            margin-top: -6px;
+        }
+    }
+
+    &.-right-top {
+        @include transform(translate(100%, -100%));
+        top: initial;
+    }
+
+    &.-right-bottom {
+        @include transform(translate(100%, 0%));
+        top: 0;
+    }
+
+    &.-left-top::after,
+    &.-right-top::after {
+        bottom: $spacing-normal;
+        margin-bottom: -6px;
+        top: initial;
+    }
+
+    &.-left-bottom::after,
+    &.-right-bottom::after {
+        top: $spacing-normal;
+    }
+
+    > .header {
+        margin-bottom: 16px;
+        margin-top: $spacing-normal;
+    }
+
+    > .list {
+        > .divider {
+            margin-left: -$spacing-normal;
+            margin-right: -$spacing-normal;
+        }
+
+        .disabled {
+            color: $grey;
+        }
+    }
+}
+
+.popover-wrapper {
+    display: inline-block;
+    position: relative;
+}

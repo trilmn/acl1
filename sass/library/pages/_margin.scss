@@ -1,0 +1,20 @@
+.black-margin-box {
+    @include size((100% / 5) 122px);
+    border: $base-border;
+    position: relative;
+
+    .demo-box {
+        background-color: $warning-color-light-100;
+        font-size: 0;
+
+        .demo-object {
+            @include size(100px 40px);
+            background-color: $primary-color-dark-20;
+        }
+
+        .desc {
+            @include position(absolute, null 0 -30px 0);
+            font-size: $base-font-size;
+        }
+    }
+}

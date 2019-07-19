@@ -1,0 +1,70 @@
+@mixin toast-generator($background-color, $border-color, $text-color) {
+    @include info-box($background-color, $border-color, $text-color);
+
+    > .btn:hover {
+        background-color: $border-color;
+    }
+}
+
+.toast-wrapper {
+    @include position(fixed, 0 null null 0);
+    padding-top: $spacing-normal;
+    width: 100%;
+    z-index: $z-index-toast;
+}
+
+.toast {
+    @include align-items(center);
+    @include display(flex);
+    @include justify-content(center);
+    @include size(750px auto);
+    @include toast-generator($grey-light-100, $grey-light-80, $grey-dark-40);
+    @include transform(translateY(30px));
+    @include transition(all .2s ease-out);
+    box-shadow: 0 16px 40px 0 rgba($black, .1);
+    cursor: default;
+    font-size: $small-font-size;
+    font-weight: $font-weight-semibold;
+    margin: 0 auto 10px;
+    opacity: 0;
+    padding: 12px 100px;
+    position: relative;
+    text-align: center;
+    visibility: hidden;
+
+    &.-info {
+        @include toast-generator($primary-color-light-100, $primary-color-light-80, $primary-color-dark-20);
+    }
+
+    &.-success {
+        @include toast-generator($success-color-light-100, $success-color-light-80, $success-color-dark-40);
+    }
+
+    &.-warning {
+        @include toast-generator($warning-color-light-100, $warning-color-light-80, $warning-color-dark-20);
+    }
+
+    &.-danger {
+        @include toast-generator($danger-color-light-100, $danger-color-light-80, $danger-color-dark-40);
+    }
+
+    &.open {
+        @include transform(none);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &.close {
+        @include transform(translateY(-9999px));
+        @include transition(all .6s cubic-bezier(.53, 0, 1, -.1));
+    }
+
+    > .btn {
+        $btn-size: 22px;
+        @include position(absolute, 50% $spacing-normal null null);
+        @include size($btn-size);
+        color: inherit;
+        margin-top: -$btn-size / 2;
+        padding: 3px;
+    }
+}

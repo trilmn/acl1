@@ -1,0 +1,118 @@
+# Use this file to configure the Overcommit hooks you wish to use. This will
+# extend the default configuration defined in:
+# https://github.com/brigade/overcommit/blob/master/config/default.yml
+#
+gemfile: .overcommit_gems.rb
+
+# Where to store hook plugins specific to a repository. These are loaded in
+# addition to the default hooks Overcommit comes with. The location is relative
+# to the root of the repository.
+plugin_directory: '.git-hooks'
+
+# Whether to check if a hook plugin has changed since Overcommit last ran it.
+# This is a defense mechanism when working with repositories which can contain
+# untrusted code (e.g. when you fetch a pull request from a third party).
+# See https://github.com/brigade/overcommit#security for more information.
+verify_signatures: true
+
+CommitMsg:
+  ALL:
+    requires_files: false
+    quiet: false
+
+  EmptyMessage:
+    enabled: true
+    description: 'Checking for empty commit message'
+    quiet: true
+
+  HardTabs:
+    enabled: false
+    description: 'Checking for hard tabs'
+    quiet: true
+
+  RussianNovel:
+    enabled: false
+    description: 'Checking length of commit message'
+    quiet: true
+
+  SingleLineSubject:
+    enabled: true
+    description: 'Checking subject line'
+    quiet: true
+
+  TextWidth:
+    enabled: true
+    description: 'Checking text width'
+    max_subject_width: 60
+    max_body_width: 72
+    quiet: true
+
+  TrailingPeriod:
+    enabled: true
+    description: 'Checking for trailing periods in subject'
+    quiet: true
+
+PreCommit:
+
+  ALL:
+    problem_on_unmodified_line: report
+    requires_files: true
+    required: false
+    quiet: true
+
+  BrokenSymlinks:
+    enabled: true
+    description: 'Checking for broken symlinks'
+    quiet: true
+
+  BundleCheck:
+    enabled: true
+    description: 'Checking Gemfile dependencies'
+    required_executable: 'bundle'
+    flags: ['check', '--gemfile', '.overcommit_gems.rb']
+    install_command: 'gem install bundler'
+    include:
+      - '.overcommit_gems.rb'
+      - '.overcommit_gems.rb.lock'
+
+  MergeConflicts:
+    enabled: true
+    on_warn: fail
+    description: 'Checking for merge conflicts'
+    quiet: true
+    required_executable: 'grep'
+    flags: ['-IHn', "^<<<<<<<[ \t]"]
+
+  ScssLint:
+    enabled: true
+    on_warn: fail
+    quiet: true
+    description: 'Analyzing with scss-lint'
+    required_executable: 'scss-lint'
+    install_command: 'gem install scss-lint'
+    include: '**/*.scss'
+
+  TrailingWhitespace:
+    enabled: false
+    on_warn: fail
+    description: 'Checking for trailing whitespace'
+    required_executable: 'grep'
+    flags: ['-IHn', "[ \t]$"]
+    exclude:
+      - '_sass/app/vendors/**/*'
+      - '_sass/**/*.scss'
+
+  YamlSyntax:
+    enabled: true
+    description: 'Checking YAML syntax'
+    required_library: 'yaml'
+    include:
+      - '**/*.yaml'
+      - '**/*.yml'
+
+#PostCheckout:
+#  ALL: # Special hook name that customizes all hooks of this type
+#    quiet: true # Change all post-checkout hooks to only display output on failure
+#
+#  IndexTags:
+#    enabled: true # Generate a tags file with `ctags` each time HEAD changes

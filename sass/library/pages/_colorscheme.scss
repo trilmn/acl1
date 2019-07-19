@@ -1,0 +1,177 @@
+$list-primary-dark: (
+    $primary-color-dark-20,
+    $primary-color-dark-40,
+    $primary-color-dark-60,
+    $primary-color-dark-80,
+    $primary-color-dark-100
+);
+
+$list-primary-light: (
+    $primary-color-light-20,
+    $primary-color-light-40,
+    $primary-color-light-60,
+    $primary-color-light-80,
+    $primary-color-light-100
+);
+
+$list-grey-dark: (
+    $grey-dark-20,
+    $grey-dark-40,
+    $grey-dark-60,
+    $grey-dark-80,
+    $grey-dark-100,
+);
+
+$list-grey-light: (
+    $grey-light-20,
+    $grey-light-40,
+    $grey-light-60,
+    $grey-light-80,
+    $grey-light-100,
+);
+
+$list-success-dark: (
+    $success-color-dark-20,
+    $success-color-dark-40,
+    $success-color-dark-60,
+    $success-color-dark-80,
+    $success-color-dark-100,
+);
+
+$list-success-light: (
+    $success-color-light-20,
+    $success-color-light-40,
+    $success-color-light-60,
+    $success-color-light-80,
+    $success-color-light-100,
+);
+
+$list-warning-dark: (
+    $warning-color-dark-20,
+    $warning-color-dark-40,
+    $warning-color-dark-60,
+    $warning-color-dark-80,
+    $warning-color-dark-100,
+);
+
+$list-warning-light: (
+    $warning-color-light-20,
+    $warning-color-light-40,
+    $warning-color-light-60,
+    $warning-color-light-80,
+    $warning-color-light-100,
+);
+
+$list-danger-dark: (
+    $danger-color-dark-20,
+    $danger-color-dark-40,
+    $danger-color-dark-60,
+    $danger-color-dark-80,
+    $danger-color-dark-100,
+);
+
+$list-danger-light: (
+    $danger-color-light-20,
+    $danger-color-light-40,
+    $danger-color-light-60,
+    $danger-color-light-80,
+    $danger-color-light-100,
+);
+
+@mixin dark-color-spectrum($color-list-name, $color-class-name) {
+    @for $i from 1 through length($color-list-name) {
+        .#{$color-class-name}#{$i * 20} {
+            background-color: nth($color-list-name, $i);
+        }
+    }
+}
+
+@mixin light-color-spectrum($color-list-name, $color-class-name) {
+    @for $i from 1 through length($color-list-name) {
+        .#{$color-class-name}#{$i * 20} {
+            background-color: nth($color-list-name, $i);
+            color: $base-font-color;
+        }
+    }
+}
+
+@mixin base-color($base-color) {
+    background-color: $base-color;
+
+    &::after {
+        @include triangle(20px, $base-color, up);
+    }
+}
+
+// Color Scheme page
+.spectrum-list {
+    @include dark-color-spectrum($list-primary-dark, -primary-color-dark-);
+    @include dark-color-spectrum($list-grey-dark, -grey-dark-);
+    @include dark-color-spectrum($list-success-dark, -success-color-dark-);
+    @include dark-color-spectrum($list-warning-dark, -warning-color-dark-);
+    @include dark-color-spectrum($list-danger-dark, -danger-color-dark-);
+    @include light-color-spectrum($list-primary-light, -primary-color-light-);
+    @include light-color-spectrum($list-grey-light, -grey-light-);
+    @include light-color-spectrum($list-success-light, -success-color-light-);
+    @include light-color-spectrum($list-warning-light, -warning-color-light-);
+    @include light-color-spectrum($list-danger-light, -danger-color-light-);
+    @include display(flex);
+    color: $white;
+    font-size: 0;
+    font-weight: 600;
+    list-style-type: none;
+    margin: 0 0 40px;
+    padding: 0;
+    width: 100%;
+
+    > .spectrum-item {
+        @include display(flex);
+        @include justify-content(center);
+        @include align-items(flex-end);
+        @include transition(all .2s ease-out);
+        cursor: pointer;
+        font-size: $base-font-size;
+        height: 140px;
+        padding-bottom: 10px;
+        text-align: center;
+        width: 9.0909%;
+
+        &:hover {
+            @include transform(scale(1.2));
+            z-index: $z-index-hover-color-scheme;
+        }
+    }
+
+    > .base-color {
+        position: relative;
+
+        &::after {
+            bottom: -20px;
+            content: '';
+            display: block;
+            left: 50%;
+            margin-left: -10px;
+            position: absolute;
+        }
+    }
+
+    .-primary-color {
+        @include base-color($primary-color);
+    }
+
+    .-grey {
+        @include base-color($grey);
+    }
+
+    .-success-color {
+        @include base-color($success-color);
+    }
+
+    .-warning-color {
+        @include base-color($warning-color);
+    }
+
+    .-danger-color {
+        @include base-color($danger-color);
+    }
+}

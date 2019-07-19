@@ -1,0 +1,36 @@
+// Typo page
+.typography-demo {
+    width: 100%;
+
+    .row {
+        @include align-items(center);
+        @include display(flex);
+        margin-bottom: 0;
+        padding: 10px 0;
+    }
+
+    .font-type {
+        color: $grey;
+        font-size: $base-font-size;
+        width: 80px;
+    }
+
+    .link {
+        color: $base-link-color;
+    }
+
+    .hovered-link {
+        color: $base-link-color;
+        text-decoration: underline;
+    }
+
+    .small,
+    .tiny {
+        margin-bottom: 0;
+    }
+
+    &.color-helper > [class*="txt"] {
+        display: inline-block;
+        margin-right: $spacing-normal;
+    }
+}
