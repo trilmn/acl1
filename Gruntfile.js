@@ -6,10 +6,6 @@ module.exports = function(grunt) {
 
     sass: {
       dist: {
-        options: {
-          sourcemap: 'auto',
-          style: 'nested'
-        },
         files: {
           'dist/acl.css': 'sass/app/acl.scss'
         }
