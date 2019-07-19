@@ -8,7 +8,7 @@
     {% endif %}
 
     <li class="menu-item {{ c }}">
-      <a href="/" class="link">Welcome</a>
+      <a href="{{ site.baseurl }}/" class="link">Welcome</a>
     </li>
     
     {% for item in site.data.pages %}
@@ -23,7 +23,7 @@
       {% assign p = site.misc | where:"permalink",page_url | first %}
 
       <li class="menu-item {{ c }}">
-        <a href="{{ page_url }}" class="link">{{ p.title }}</a>
+        <a href="{{ page_url | prepend: site.baseurl }}" class="link">{{ p.title }}</a>
       </li>
     {% endfor %}
   </ul>
@@ -35,7 +35,7 @@
     <ul class="menu">
     {% for item in doc.docs %}
 
-      {% assign item_url = item | prepend:"/docs/" | append:".html" %}
+      {% assign item_url = item | prepend: "/docs/" | append:".html" %}
 
       {% if item_url == page.url %}
         {% assign c = "current" %}
@@ -45,7 +45,7 @@
 
       {% assign p = site.docs | where:"url",item_url | first %}
       <li class="menu-item {{ c }}">
-        <a href="{{ item_url }}" class="link">{{ p.title }}</a>
+        <a href="{{ item_url | prepend: site.baseurl }}" class="link">{{ p.title }}</a>
       </li>
 
     {% endfor %}
