@@ -11,7 +11,7 @@ email: design@anduintransact.com
 description: > # this means to ignore newlines until "baseurl:"
   Reasonable System for CSS Stylesheet Structure. A set of simple ideas
   to guide your process of building maintainable CSS.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/acl1" # the subpath of your site, e.g. /blog
 version: 1.0.10
 url: "https://anduintransact.com" # the base hostname & protocol for your site
 twitter_username: anduintransact
